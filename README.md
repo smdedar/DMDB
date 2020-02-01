@@ -1,2 +1,2 @@
 # DMDB
-Use TMDB API and Material Dsign
+Use TMDB API and Material Design
