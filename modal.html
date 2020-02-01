@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DMDB</title>
+    <!-- Jquery CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Materialize CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Materialize JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Matrial ICON CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- External JS -->
+    <script src="app.js"></script>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Font CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+      
+   <!-- Modal Trigger -->
+   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal">
+     <div class="modal-content">
+        <div class="card horizontal">
+            <div class="card-image">
+              <img src="https://image.tmdb.org/t/p/w400//or06FN3Dka5tukK1e9sl16pB3iy.jpg">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information.I am a very simple card. I am good at containing small bits of information.</p>
+              </div>
+             
+            </div>
+          </div>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+     </div>
+   </div>
+           
+        
+        
+    </div>
+
+    <script>
+        $(document).ready(function(){
+    $('.modal').modal();
+  });
+       
+        
+        </script>
+</body>
+</html>
+

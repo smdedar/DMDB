@@ -1,0 +1,171 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DMDB</title>
+    <!-- Jquery CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Materialize CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Materialize JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Matrial ICON CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- External JS -->
+    <script src="app.js"></script>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Font CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    <input id="search-name"  onkeyup="search();" type="text" class="validate center-align" placeholder="Serach Movie">
+                </div>
+                <!-- <div class="progress">
+                    <div class="indeterminate"></div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Body Content Start-->
+        <div class="row" id="movie">
+            <div class="col m3 s6 ">
+                <div class="card purple lighten-3 hoverable">
+                    <div class="card-image ">
+                        <img src="https://image.tmdb.org/t/p/w400//or06FN3Dka5tukK1e9sl16pB3iy.jpg">
+                        <a class="btn-floating halfway-fab waves-effect  purple lighten-2"><i class="material-icons">play_circle_outline</i></a>
+                    </div>
+
+                    <div class="card-action purple lighten-4">
+                        <span class="card-title">Star Wars: The Rise of Skywalker </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m3 s6 ">
+                <div class="card purple lighten-3 hoverable">
+                    <div class="card-image ">
+                        <img src="https://image.tmdb.org/t/p/w400//or06FN3Dka5tukK1e9sl16pB3iy.jpg">
+                        <a class="btn-floating halfway-fab waves-effect  purple lighten-2"><i class="material-icons">play_circle_outline</i></a>
+                    </div>
+
+                    <div class="card-action purple lighten-4">
+                        <span class="card-title">Star Wars: The Rise of Skywalker </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m3 s6 ">
+                <div class="card purple lighten-3 hoverable">
+                    <div class="card-image ">
+                        <img src="https://image.tmdb.org/t/p/w400//db32LaOibwEliAmSL2jjDF6oDdj.jpg">
+                        <a class="btn-floating halfway-fab waves-effect  purple lighten-2"><i class="material-icons">play_circle_outline</i></a>
+                    </div>
+
+                    <div class="card-action purple lighten-4">
+                        <span class=" truncate card-title">Star Wars: The Rise of Skywalker </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m3 s6 ">
+                <div class="card purple lighten-3 hoverable">
+                    <div class="card-image ">
+                        <img src="https://image.tmdb.org/t/p/w400//or06FN3Dka5tukK1e9sl16pB3iy.jpg">
+                        <a class="btn-floating halfway-fab waves-effect  purple lighten-2"><i class="material-icons">play_circle_outline</i></a>
+                    </div>
+
+                    <div class="card-action purple lighten-4">
+                        <span class="card-title">Star Wars: The Rise of Skywalker </span>
+                    </div>
+                </div>
+            </div>
+
+           
+
+           
+
+        </div> <!-- Body Content End -->
+
+        
+        
+    </div>
+</body>
+</html>
+
+<script>
+    //var uri = "Star Wars: The Rise of Skywalker";
+    // var res = encodeURI(uri);
+    // var a = 'http://www.omdbapi.com/?t='+res+'&apikey=b642a941';
+    // console.log(a);
+
+    // var b = 'http://www.omdbapi.com/?i=tt4010884&apikey=b642a941';
+    // console.log(b);
+
+    //var key = '4e5763a5269b4e3862f5a2eed7b9fb16';
+    //var c = 'https://api.themoviedb.org/3/search/star?api_key='+key+'&page=1';
+    function search() {
+        var searchName = document.getElementById('search-name').value;
+        //console.log(searchName);
+        var encodeName = encodeURI(searchName);
+        //console.log(ensodeName);
+        var searchUrl = 'https://api.themoviedb.org/3/search/movie?api_key=0dd443fc17bbbbadbda9d5d335630fa1&language=en-US&query='+encodeName+'&page=1&include_adult=false'
+        console.log(searchUrl);
+
+        var html = '';
+        var totalResult,title,poster;
+
+        fetch(searchUrl)
+            .then((response) => {
+                return response.json();
+            })
+            .then((myJson) => {
+                
+                totalResult = myJson.total_results;
+                console.log(totalResult);
+
+                if(totalResult > 20){
+                    totalResult = 20;
+                }
+                // console.log(myJson.results[0].title);
+                // console.log("http://image.tmdb.org/t/p/w400/" + myJson.results[0].poster_path);
+
+                for(var i=0; i<totalResult; i++){
+                   title = myJson.results[i].title;
+                   //console.log(title);
+                   poster = "http://image.tmdb.org/t/p/w200/" + myJson.results[i].poster_path;
+                   console.log("http://image.tmdb.org/t/p/w400/" + myJson.results[i].backdrop_path);
+                  // console.log(poster);
+
+                   html += '<div class="col m3 s6 "> <div class="card purple lighten-3 hoverable"> <div class="card-image "> <img src="'+ poster +'"> <a class="btn-floating halfway-fab waves-effect purple lighten-2"><i class="material-icons">play_circle_outline</i></a> </div> <div class="card-action purple lighten-4"> <span class="card-title truncate"> '+ title +' </span> </div> </div> </div>';
+                }
+
+                document.getElementById('movie').innerHTML = html;
+
+            });
+
+
+    }
+
+    // var url = "Star Wars: The Rise of Skywalker"
+    // var res = encodeURI(url);
+    // var c = 'https://api.themoviedb.org/3/search/movie?api_key=0dd443fc17bbbbadbda9d5d335630fa1&language=en-US&query=' +
+    //     res + '&page=1&include_adult=false'
+    // console.log(c);
+
+
+    // fetch(c)
+    //     .then((response) => {
+    //         return response.json();
+    //     })
+    //     .then((myJson) => {
+    //         //console.log("http://image.tmdb.org/t/p/w400/" + myJson.results[0].poster_path);
+    //         //console.log("http://image.tmdb.org/t/p/w400/" + myJson.results[0].backdrop_path);
+
+    //     });
+</script>
